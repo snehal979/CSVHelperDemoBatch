@@ -5,19 +5,17 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CSVHelperDemoBatch
 {
-    public class CSVHandler
+    public class CsvFIIeTOJsonFile
     {
-        string importFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoImportFile.csv";
-        string exportFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoExportFile.csv";
-        /// <summary>
-        /// Read / Write CSV File into  String Array
-        /// </summary>
-        public void ImplementationCsvHanding()
+        public void ImplementationCsvFile_JsonFile()
         {
-            //read CSV file
+            string importFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoImportFile.csv";
+            string jsonFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoJsonFile.json";
+
             using (var reader = new StreamReader(importFilepath))
             using (var csvRead = new CsvReader(reader, CultureInfo.InvariantCulture)) // only get property 
             {
@@ -31,14 +29,17 @@ namespace CSVHelperDemoBatch
                     Console.WriteLine("\t" + data.PhoneNumber);
                     Console.WriteLine("\n");
                 }
-                Console.WriteLine("\n----------write to csv Other file--------------");
-                // write csv file
-                using var writer = new StreamWriter(exportFilepath);
-                using (var csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                Console.WriteLine("-----------Read CSV TO Write JSON-------------");
+                //Write json File
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamWriter sw = new StreamWriter(jsonFilepath))
+                using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    csvWrite.WriteRecords(records);
-                }
+                    serializer.Serialize(writer, records);
+                } 
+                
             }
+            
         }
     }
 }
