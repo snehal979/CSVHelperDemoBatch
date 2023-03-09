@@ -4,7 +4,8 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("hint 1 .Csv File Read or Write \n 2.Csv File to Json File");
+            Console.WriteLine("hint 1 .Csv File Read or Write \n 2.Csv File to Json File \n 3.Json File To Cs File");
+            CsvFIIeTOJsonFile csvFIIeTOJson = new CsvFIIeTOJsonFile();
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -13,8 +14,13 @@
                     cSVHandler.ImplementationCsvHanding();
                     break;
                 case 2:
-                    CsvFIIeTOJsonFile csvFIIeTOJson = new CsvFIIeTOJsonFile();
                     csvFIIeTOJson.ImplementationCsvFile_JsonFile();
+                    break;
+                case 3:
+                    csvFIIeTOJson.ImplementationJsonToCsv();
+                    break;
+                default:
+                    Console.WriteLine("Invalid");
                     break;
             }
         }

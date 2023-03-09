@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,8 +11,8 @@ namespace CSVHelperDemoBatch
 {
     public class CSVHandler
     {
-        string importFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoImportFile.csv";
-        string exportFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\DemoExportFile.csv";
+        string importFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\Files\DemoImportFile.csv";
+        string exportFilepath = @"C:\Users\hp\Desktop\newBatch2\CSVHelperDemoBatch\CSVHelperDemoBatch\Files\DemoExportFile.csv";
         /// <summary>
         /// Read / Write CSV File into  String Array
         /// </summary>
